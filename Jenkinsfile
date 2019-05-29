@@ -32,9 +32,10 @@ node {
         stage('Deploy to Nexus') {
             sh "${mvnHome}/bin/mvn deploy -DBUILD_NUMBER=$build_version -Dmaven.test.skip=true"
          }
-        stage('Int Tests') {
-              //sh 'docker rmi $(docker images --filter "dangling=true" -q --no-trunc) '
-              sh "docker ps"
+       stage ('ssh to deployment server') { 
+          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '1cbeac72-4505-4a87-9bbe-de92a95b9217', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+            sh 'sshpass -p $PASSWORD ssh -t root@10.118.169.49 | docker images'
            }
-            }
+        }
+    }
 
