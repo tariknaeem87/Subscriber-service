@@ -33,7 +33,7 @@ spring:
 
     datasource:
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://10.118.169.49:3308/tsp_subscriber
+      url: jdbc:mysql://10.118.169.49:3308/tsp-subscriber
       username: admin
       password: admin
     jpa:
