@@ -35,7 +35,7 @@ node {
        stage ('ssh to deployment server') { 
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '1cbeac72-4505-4a87-9bbe-de92a95b9217', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
   //          sh 'sshpass -p $PASSWORD ssh -t root@10.118.169.49 | sshpass -p "password" scp user@remote-machine:/home/QA.txt /home/faadmin/'
-              sh 'sshpass -p "password" scp /var/lib/jenkins/workspace/Subscriber-Test-GSAP/subscriber-service/target/subscriber-service-1.0.0-SNAPSHOT.jar root@10.118.169.49:/root/Subscriber-service/'
+              sh 'sshpass -p $PASSWORD scp /var/lib/jenkins/workspace/Subscriber-Test-GSAP/subscriber-service/target/subscriber-service-1.0.0-SNAPSHOT.jar root@10.118.169.49:/root/Subscriber-service/'
 
           }
         }
