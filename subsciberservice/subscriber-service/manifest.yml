@@ -1,0 +1,13 @@
+name: TSP-Subscriber-Service
+path: target/subscriber-service-1.0.0-SNAPSHOT-exec.jar
+memory: 1024M
+buildpack: https://github.com/cloudfoundry/java-buildpack.git
+instances: 1
+disk_quota: 1G
+timeout: 180
+services:
+   - tsp-subscriber-db
+   - service-registry
+   - config-server
+env:
+    SPRING_PROFILES_ACTIVE: development 

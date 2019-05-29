@@ -1,0 +1,13 @@
+---
+applications:
+- name: TSP-subscriber-Service
+  path: target/subscriber-service-1.0.0-SNAPSHOT-exec.jar 
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  memory: 1G
+  services:
+    - tsp-subscriber-db
+    - service-registry
+    - config-server
+  env:
+    SPRING_PROFILES_ACTIVE: prod 
+  
