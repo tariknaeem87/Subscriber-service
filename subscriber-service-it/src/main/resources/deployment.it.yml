@@ -51,12 +51,12 @@ spring:
 useSSL: false
 security.enable-csrf: false
 
-eureka:
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://10.118.169.49:8761/eureka 
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://10.118.169.49:8761/eureka 
     
 adminBaseUrl: https://tsp-admin-service.cfapps.io/api/
 notifiationBaseUrl: https://tsp-notification-service.cfapps.io/api/
