@@ -47,8 +47,7 @@ spring:
       routingkey: messages.key
     
 useSSL: false
-security:
-    enable-csrf: false
+security.enable-csrf: false
 
 eureka:
   client:
