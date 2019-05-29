@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableCircuitBreaker
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 public class Application implements EnvironmentAware {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Application.class);
