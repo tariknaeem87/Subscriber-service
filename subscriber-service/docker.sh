@@ -4,4 +4,4 @@ docker stop subscriber-service
 docker rm subscriber-service
 docker rmi subscriber-service
 docker image build -t subscriber-service ~/Subscriber-service/.
-docker run -i -d -p 9090:9090 --expose 9090 --name subscriber-service -t demo/subscriber-service
+docker run -d -p 9090:9999 --name subscriber-service subscrier-service
