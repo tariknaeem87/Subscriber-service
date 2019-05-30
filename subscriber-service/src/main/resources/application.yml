@@ -59,4 +59,4 @@ security.enable-csrf: false
     
 adminBaseUrl: https://10.118.169.49:8889/api/
 notifiationBaseUrl: https://10.118.169.49:7778/api/
-crossOrigin: https://localhost:4200
+crossOrigin: https://10.118.169.49:4301
