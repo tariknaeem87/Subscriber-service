@@ -32,17 +32,13 @@ node {
         stage('Deploy to Nexus') {
             sh "${mvnHome}/bin/mvn deploy -DBUILD_NUMBER=$build_version -Dmaven.test.skip=true"
          }
-       stage ('Copy Artifact to Deployment Server') { 
+       stage ('Copy Artifact to Deployment Server and containerization') { 
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '1cbeac72-4505-4a87-9bbe-de92a95b9217', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
               sh 'sshpass -p $PASSWORD scp /var/lib/jenkins/workspace/Subscriber-Test-GSAP/subscriber-service/target/subscriber-service-1.0.0-SNAPSHOT.jar root@10.118.169.49:/root/Subscriber-service/'
               sh 'sshpass -p $PASSWORD scp /var/lib/jenkins/workspace/Subscriber-Test-GSAP/subscriber-service/target/subscriber-service-1.0.0-SNAPSHOT-exec.jar root@10.118.169.49:/root/Subscriber-service/'
               sh 'sshpass -p $PASSWORD scp /var/lib/jenkins/workspace/Subscriber-Test-GSAP/Dockerfile root@10.118.169.49:/root/Subscriber-service/'
               sh 'sshpass -p $PASSWORD scp /var/lib/jenkins/workspace/Subscriber-Test-GSAP/subscriber-service/docker.sh root@10.118.169.49:/root/Subscriber-service/'
-             }   
-          }
-        stage ('Subscriber BE deployment to Docker') { 
-           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '1cbeac72-4505-4a87-9bbe-de92a95b9217', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-              sh "sshpass -p $PASSWORD ssh root@10.118.169.49 'chmod a+x /root/Subscriber-service/docker.sh; /root/Subscriber-service/docker.sh'"
-          }
-    }
+              sh "sshpass -p $PASSWORD ssh root@10.118.169.49 'chmod a+x /root/Subscriber-service/docker.sh; /root/Subscriber-service/docker.sh'"   
+          }   
+      }
 }
